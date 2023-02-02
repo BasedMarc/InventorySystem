@@ -1,4 +1,0 @@
-print ("\nBirthday Calculator")
-print ("\nCurrent day")
-print (int(input('Month: ')
-
