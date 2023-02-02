@@ -1,27 +1,24 @@
-<<<<<<< HEAD
-age = int
 
 print("Birthday Calculator")
 print("Current Day")
-print(int(input("Month: ")))
-print(int(input("Day:")))
-print(int(input("Year: ")))
+
+current_month = int(input("Month: "))
+current_day = int(input("Day: "))
+current_year = int(input("Year: "))
+
 print("Birthday")
-print(int(input("Month: ")))
-print(int(input("Day:")))
-print(int(input("Year: ")))
 
-=======
-age = int
+birthday_month = int(input("Month: "))
+birthday_day = int(input("Day:"))
+birthday_year = int(input("Year: "))
 
-print("Birthday Calculator")
-print("Current Day")
-print(int(input("Month: ")))
-print(int(input("Day:")))
-print(int(input("Year: ")))
-print("Birthday")
-print(int(input("Month: ")))
-print(int(input("Day:")))
-print(int(input("Year: ")))
+current_age = int
 
->>>>>>> origin/main
+if (current_month == birthday_month) and (current_day == birthday_day):
+    current_age = (current_year - birthday_year)
+    print('You are', current_age, ' years old.')
+    print('Happy Birthday!')
+
+else:
+    current_age = current_year - birthday_year
+    print('You are', current_age, ' years old.')
