@@ -1,4 +1,3 @@
-
 print("Birthday Calculator")
 print("Current Day")
 
