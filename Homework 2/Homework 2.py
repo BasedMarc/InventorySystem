@@ -1,19 +1,23 @@
 import datetime
-# Get the current date and time
-current_date = datetime.datetime.now()
-# Continuously ask for user input until -1 is entered
-while True:
-    date_str = input().strip()
-    if date_str == '-1':
-        break
 
-    try:
-        # Attempt to convert the user input into a datetime object using the specified format
-        date = datetime.datetime.strptime(date_str, '%B %d, %Y')
-        # Check if the input date is earlier than or equal to the current date
-        if date <= current_date:
-            # Print the formatted date if it meets the criteria
-            print(date.strftime('%m/%d/%Y'))
-    except ValueError:
-        # If the user input cannot be converted to a datetime object, ignore it
-        pass
+# Open input and output files
+with open('inputDates.txt', 'r') as input_file, open('parsedDates.txt', 'w') as output_file:
+    # Get current date
+    current_date = datetime.datetime.now()
+
+    # Loop through input file lines
+    for line in input_file:
+        # Strip line and check for termination condition
+        date_str = line.strip()
+        if date_str == '-1':
+            break
+
+        try:
+            # Parse date and check if it's before or on current date
+            date = datetime.datetime.strptime(date_str, '%B %d, %Y')
+            if date <= current_date:
+                # Write parsed date to output file and print to console
+                output_file.write(date.strftime('%m/%d/%Y') + '\n')
+                print(date.strftime('%m/%d/%Y'))
+        except ValueError:
+            pass
