@@ -1,6 +1,3 @@
-# Marco Lopez 1537013
-# CIS 2348-17255
-
 class ItemToPurchase:
     def __init__(self, item_name="none", item_price=0, item_quantity=0, item_description="none"):
         # Initialize instance attributes with default values or given values
