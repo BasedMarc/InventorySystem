@@ -1,4 +1,4 @@
-#Marco Lopez 1537013
+# Marco Lopez 1537013
 
 # Import necessary modules
 import csv
@@ -16,16 +16,16 @@ class InventoryManager:
     # Function to read a CSV file and return its data as a list of rows
     def read_csv(self, filename):
         data = []
-        with open(filename, 'r') as csvfile:
-            reader = csv.reader(csvfile)
+        with open(filename, 'r') as csv_file:
+            reader = csv.reader(csv_file)
             for row in reader:
                 data.append(row)
         return data
 
     # Function to write a list of rows to a CSV file
     def write_csv(self, filename, data):
-        with open(filename, 'w', newline='') as csvfile:
-            writer = csv.writer(csvfile)
+        with open(filename, 'w', newline='') as csv_file:
+            writer = csv.writer(csv_file)
             writer.writerows(data)
 
     # Functions to return specific elements from a list
