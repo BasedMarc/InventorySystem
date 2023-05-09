@@ -5,13 +5,17 @@ import csv
 from datetime import datetime
 
 
+def past_service_inventory_key(item):
+    return datetime.strptime(item[4], "%d/%m/%Y"), item[1], item[0]
+
+
 # Define the InventoryManager class to manage the store inventory
 def price_key(item):
     return item[3]
 
 
 def service_date_key(item):
-    return item[4]
+    return datetime.strptime(item[4], "%m/%d/%Y")
 
 
 def item_id_key(item):
@@ -66,7 +70,7 @@ class InventoryManager:
         # Process each item in the manufacturers list
         for item in manufacturers:
             item_id, manufacturer, item_type, *damaged = item
-            damaged = "Yes" if damaged else "No"
+            damaged = "Yes" if damaged and damaged[0].strip() == "damaged" else "No"
             price = id_price[item_id]
             service_date = id_service_date[item_id]
 
@@ -96,7 +100,7 @@ class InventoryManager:
             write_csv(f"{item_type}Inventory.csv", items)
 
         # Write the past service inventory items to CSV
-        past_service_inventory.sort(key=service_date_key)
+        past_service_inventory.sort(key=past_service_inventory_key)
         write_csv("PastServiceDateInventory.csv", past_service_inventory)
 
         # Sort the damaged inventory items by price (descending) and write to CSV
